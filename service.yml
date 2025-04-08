@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: apitest
+spec:
+  selector:
+    app: apitest
+  ports:
+    - protocol: TCP
+      port: 80      # External Port
+      targetPort: 3000  # Port on the container
+  type: LoadBalancer  # Exposes the app publicly

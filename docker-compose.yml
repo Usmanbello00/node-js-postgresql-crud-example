@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: admin2
+      POSTGRES_PASSWORD: Password@123
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: nodejs_crud_app
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DB_HOST: apitesting.postgres.database.azure.com
+      DB_USER: admin2
+      DB_PASSWORD: Password@123
+      DB_NAME: postgres
+    ports:
+      - "8081:8080"
+    command: ["node", "server.js"]
+
+volumes:
+  postgres_data:

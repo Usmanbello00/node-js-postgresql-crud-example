@@ -1,8 +1,8 @@
 module.exports = {
-  HOST: "localhost",
-  USER: "postgres",
-  PASSWORD: "123",
-  DB: "testdb",
+  HOST: "apitesting.postgres.database.azure.com",
+  USER: "admin2",
+  PASSWORD: "Password@123",
+  DB: "postgres",
   dialect: "postgres",
   pool: {
     max: 5,
